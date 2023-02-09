@@ -1,21 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Simple PWA</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="manifest" href="/manifest.json">
-<body>
-<nav>
-  <h1>VM PWA</h1>
-</nav>
-<header>
-  <h2>Изучаем PWA, manifest, Service Workers</h2>
-</header>
-<div class="container">
-  <div id="posts"></div>
-</div>
 
-<script src="js/app.js"></script>
-</body>
+<head>
+    <meta charset="UTF-8">
+    <title>Simple PWA</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="/manifest.json">
+
+    <body>
+        <nav>
+            <h1>VM PWA</h1>
+        </nav>
+
+        <header id="layout-header" class="header">
+            <div class="header__main">
+                <div class="container">
+                    <div class="header__wrap">
+                        <div class="header__logo">
+                            <a class="header__logo-link logoLink" href="/" title="WestMotors">
+                                <img src="https://westmotors.hb.bizmrg.com/assets/images/logo.webp" width="175" height="33" alt="westmotors">
+                            </a>
+                        </div>
+                        <div class="header__box dn992">
+                            <div class="header__services">
+                                <div class="container_dropdown">
+                                    <div class="dropdown-wrapper">
+                                        <button type="button" data-dropdown-toggle="dropdown-about">О компании</button>
+                                        <div id="dropdown-about" class="dropdown-menu" style="display:none;">
+                                            <ul class="two-column">
+                                                <li>
+                                                    <a href="/about">
+                                                        <span class="headline">О Компании</span>
+                                                        <span class="subtitle">История компании WestMotors</span>
+                                                    </a>
+                                                </li>
+                                                <!--
+                <li>
+          <a href="/club">
+            <span class="headline">Клуб</span>
+            <span class="subtitle">Клубные карты и бонусы</span>
+          </a>        
+        </li>
+              </ul>
+      
+      <ul class="two-column">
+        <li>
+          <a href="/vacancy">
+            <span class="headline">Вакансии<small>+2</small></span>
+            <span class="subtitle">Стань частью нашей команды</span>
+          </a>        
+        </li>
+      </ul>
+      -->
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown-wrapper">
+                                        <button type="button" data-dropdown-toggle="dropdown-services">Услуги</button>
+                                        <div id="dropdown-services" class="dropdown-menu medium" style="display:none;">
+                                            <ul class="two-column">
+                                                <li>
+                                                    <a href="/avto-import">
+                                                        <span class="headline">Импорт авто</span>
+                                                        <span class="subtitle">Подбор автомобиля из-за границы</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/customs-assistance">
+                                                        <span class="headline">Растаможка авто</span>
+                                                        <span class="subtitle">Помощь в растаможке авто</span>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/tesla-repair">
+                                                        <span class="headline">Мастерская Tesla</span>
+                                                        <span class="subtitle">Ремонт и тюнинг Тесла</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+
+                                            <ul class="two-column">
+                                                <li>
+                                                    <a href="/avto-delivery">
+                                                        <span class="headline">Доставка авто</span>
+                                                        <span class="subtitle">Доставка авто из-за границы</span>
+                                                    </a>
+                                                </li>
+                                                <!--<li>
+          <a href="/car-loan">
+            <span class="headline">Авто в кредит</span>
+            <span class="subtitle">Покупка авто в кредит</span>
+          </a>        
+        </li>-->
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-wrapper">
+                                        <button type="button" data-dropdown-toggle="dropdown-apps">Сервисы</button>
+                                        <div id="dropdown-apps" class="dropdown-menu medium" style="display:none;">
+                                            <ul class="two-column">
+                                                <li>
+                                                    <a href="/calc">
+                                                        <span class="headline">Калькулятор</span>
+                                                        <span class="subtitle">Калькулятор всех расходов по
+														автомобилю</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/container-tracking">
+                                                        <span class="headline">Отслеживание</span>
+                                                        <span class="subtitle">Отслеживание контейнера с авто</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                            <ul class="two-column">
+                                                <li>
+                                                    <a href="/carfax">
+                                                        <span class="headline">Проверка карфакс</span>
+                                                        <span class="subtitle">Проверка авто по базе карфакс(carfax)</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/payment">
+                                                        <span class="headline">Онлайн оплата</span>
+                                                        <span class="subtitle">Оплатите услуги WestMotors онлайн</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown-wrapper">
+                                        <button type="button" data-dropdown-toggle="dropdown-info">Полезное</button>
+                                        <div id="dropdown-info" class="dropdown-menu medium" style="display:none;">
+                                            <ul class="two-column">
+                                                <li>
+                                                    <a href="/blog">
+                                                        <span class="headline">Блог</span>
+                                                        <span class="subtitle">Новости и интересные авторские статьи</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/auctions">
+                                                        <span class="headline">Авто аукционы США</span>
+                                                        <span class="subtitle">Рекомендации по работе с авто аукционами
+														Америки</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                            <ul class="two-column">
+                                                <li>
+                                                    <a href="/faq">
+                                                        <span class="headline">Вопросы и Ответы</span>
+                                                        <span class="subtitle">Частые вопросы по авто из США</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/car-exported-titles">
+                                                        <span class="headline">Тайтлы США</span>
+                                                        <span class="subtitle">Экспортируемые и неэкспортируемые
+														тайтлы</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-wrapper ">
+                                        <button type="button" data-dropdown-toggle="dropdown-contacts" onclick="location.href='/contacts'">Контакты</button>
+                                    </div>
+                                    <div class="dropdown-wrapper">
+                                        <a href="tel:+375(29)170-70-01" class="phone_link">+375(29)170-70-01</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header__box">
+                            <div class="header__phone">
+                                <div class="header__phone-box my-price-box">
+                                    <a href="tel:+375(29)170-70-01">+375(29)170-70-01</a>
+                                    <ul class="header__phone-list">
+                                        <li class="header__phone-unit">
+                                            <a class="header__phone-unitlink" href="tel:+375(29)170-70-01">+375(29)170-70-01</a>
+                                        </li>
+                                        <li class="header__phone-unit">
+                                            <a class="header__phone-unitlink header__phone-unitlink_size" href="tel:"></a>
+                                        </li>
+                                    </ul>
+                                    <button class="header__phone-btn">
+									<svg class="header__phone-img">
+										<use xlink:href="#bottomArrowIcon"></use>
+									</svg>
+								</button>
+                                </div>
+                                <button class="header__phone-cta btnModal btnModalSix">
+								<img src="https://westmotors.hb.bizmrg.com/media/cloud_photo/icons/callback.svg"
+									class="callback_img"> Заказать звонок</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header__top">
+                <div class="container desk-menu">
+                    <nav class="header__menu box-menu">
+                        <button class="header__menu-btn svg-contains">
+						<svg id="menu-show" class="ham hamRotate ham1" viewBox="0 0 100 100" width="40" height="40"
+							onclick="this.classList.toggle('active')">
+							<path class="line top"
+								d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40">
+							</path>
+							<path class="line middle" d="m 30,50 h 40"></path>
+							<path class="line bottom"
+								d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40">
+							</path>
+						</svg>
+					</button>
+                        <div class="header__menu-list nav">
+                            <div class="menu-container dn992">
+                                <div class="menu-header-container">
+                                    <ul id="cd-primary-nav" class="menu">
+                                        <li class="menu-item menu-item-has-children">
+                                            <a href="#">Автомобили</a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item">
+                                                    <a href="/catalog-avto">Авто из США</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="/catalog-avto-uae">Авто из ОАЭ</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="/catalog-avto-korea">Авто из Кореи</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="/catalog-avto-china">Авто из Китая</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="/catalog-avto-europe">Авто из Европы</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="/catalog-avto-russia">Авто из России</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item menu-item-has-children">
+                                            <a href="#">Электрокары</a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item">
+                                                    <a href="/catalog-electro-avto">Электромобили из США</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="/catalog-avto-china">Электромобили из Китая</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item menu-item-has-children">
+                                            <a href="#">Мото</a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item">
+                                                    <a href="/catalog-moto">Мотоциклы из США</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="/catalog-quadro">Квадроциклы из США</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="/catalog-baggi">Багги из США</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="/catalog-gidro">Гидроциклы из США</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="/catalog-snowmobile">Снегоходы из США</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/avto-in-stock">Авто в наличии</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/hot-lots"> 🔥 Горящие лоты</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/calc">Калькулятор расходов</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="https://wmlk2.westmotors.by/login" rel="nofollow" target="_blank">👤
+											Личный кабинет</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="middle mob_only">
+                                <div class="menu_mob">
+                                    <div class="item_mob mb-10" id="menu">
+                                        <a href="/" class="btn_mob strong"><img src="https://westmotors.hb.bizmrg.com/media/cloud_photo/icons/home.webp" class="btn_mob_img"> Главная</a>
+                                        <a href="/about" class="btn_mob strong"><img src="https://westmotors.hb.bizmrg.com/media/cloud_photo/icons/about.webp" class="btn_mob_img"> О Компании</a>
+                                        <a href="/contacts" class="btn_mob strong"><img src="https://westmotors.hb.bizmrg.com/media/cloud_photo/icons/contacts.webp" class="btn_mob_img"> Контакты</a>
+                                        <a href="https://wmlk2.westmotors.by/login" class="btn_mob strong"><img src="https://westmotors.hb.bizmrg.com/media/cloud_photo/icons/lk.webp" class="btn_mob_img"> Личный кабинет</a>
+                                    </div>
+                                    <div class="item_mob item_mob--drop" id="services">
+                                        <a href="#services" class="btn_mob">
+                                            <p>Услуги</p>
+                                            <span>▼</span>
+                                        </a>
+                                        <div class="smenu">
+                                            <a href="/avto-import">Импорт авто</a>
+                                            <a href="/avto-delivery">Доставка авто</a>
+                                            <a href="/customs-assistance">Помощь на таможне</a>
+                                            <a href="/tesla-repair">Ремонт тесла</a>
+                                        </div>
+                                    </div>
+                                    <div class="item_mob item_mob--drop" id="tools">
+                                        <a href="#tools" class="btn_mob">
+                                            <p>Сервисы</p>
+                                            <span>▼</span>
+                                        </a>
+                                        <div class="smenu">
+                                            <a href="/calc">Калькулятор расходов</a>
+                                            <a href="/container-tracking">Отслеживание контейнера</a>
+                                            <a href="/carfax">Проверка CARFAX</a>
+                                            <a href="/payment">Онлайн оплата услуг</a>
+                                        </div>
+                                    </div>
+                                    <div class="item_mob item_mob--drop" id="help">
+                                        <a href="#help" class="btn_mob">
+                                            <p>Полезное</p>
+                                            <span>▼</span>
+                                        </a>
+                                        <div class="smenu">
+                                            <a href="/blog">Блог</a>
+                                            <a href="/faq">Частые вопросы</a>
+                                            <a href="/car-exported-titles">Тайтлы США</a>
+                                            <a href="/auctions">Авто аукционы США</a>
+                                        </div>
+                                    </div>
+                                    <div class="item_mob item_mob--drop" id="automobile">
+                                        <a href="#automobile" class="btn_mob">
+                                            <p>Автомобили</p>
+                                            <span>▼</span>
+                                        </a>
+                                        <div class="smenu">
+                                            <a href="/avto-in-stock">Авто в наличии</a>
+                                            <a href="/catalog-avto">Авто из США</a>
+                                            <a href="/catalog-avto-uae">Авто из ОАЭ</a>
+                                            <a href="/catalog-avto-korea">Авто из Кореи</a>
+                                            <a href="/catalog-avto-china">Авто из Китая</a>
+
+
+                                            <a href="/catalog-avto-europe">Авто из Европы</a>
+                                        </div>
+                                    </div>
+                                    <div class="item_mob item_mob--drop" id="electromobile">
+                                        <a href="#electromobile" class="btn_mob">
+                                            <p>Электромобили</p>
+                                            <span>▼</span>
+                                        </a>
+                                        <div class="smenu">
+                                            <a href="/catalog-electro-avto">Электромобили из США</a>
+                                            <a href="/catalog-avto-china">Электромобили из Китая</a>
+                                        </div>
+                                    </div>
+                                    <div class="item_mob item_mob--drop" id="moto">
+                                        <a href="#moto" class="btn_mob">
+                                            <p>Мототехника</p>
+                                            <span>▼</span>
+                                        </a>
+                                        <div class="smenu">
+                                            <a href="/catalog-moto">Мотоциклы из США</a>
+                                            <a href="/catalog-quadro">Квадроциклы из США</a>
+                                            <a href="/catalog-baggi">Багги из США</a>
+                                            <a href="/catalog-gidro">Гидроциклы из США</a>
+                                            <a href="/catalog-snowmobile">Снегоходы из США</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </nav>
+                    </div>
+                </div>
+
+                <div>
+                    <svg style="display: none;">
+				<symbol viewBox="0 0 19 19" id="bottomArrowIcon">
+					<path
+						d="M5.16 5.942l4.779 5.991a.215.215 0 00.325 0l4.78-5.991a.297.297 0 00.023-.317.208.208 0 00-.184-.11H5.32a.208.208 0 00-.183.11.298.298 0 00.024.317z"
+						fill-rule="nonzero" />
+				</symbol>
+				<symbol viewBox="0 0 19 19" id="plus">
+					<line x1="9.5" x2="9.5" y2="19" stroke-width="3" />
+					<line x1="19" y1="9.5" y2="9.5" stroke-width="3" />
+				</symbol>
+			</svg>
+                </div>
+
+
+        </header>
+        <div class="container">
+            <div>
+
+            </div>
+            <div id="posts"></div>
+        </div>
+
+        <script src="js/app.js"></script>
+    </body>
+
 </html>

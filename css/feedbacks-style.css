@@ -1,0 +1,261 @@
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    border: 0;
+}
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    border: 0;
+}
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+    background: none;
+}
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="submit"],
+input[type="number"],
+input[type="search"] {
+    -webkit-appearance: none;
+}
+ul,
+ol,
+nav {
+    list-style-type: none;
+}
+ul li,
+ol li,
+nav li {
+    list-style-type: none;
+}
+.review {
+    text-align: left;
+}
+.review__name {margin-right:10px;}
+a {
+    display: inline-block;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+a.name {
+    color: rgb(145, 8, 8);
+    display: inline-block;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    line-height: 1.4em;
+}
+a.name:hover {
+    color: rgb(8, 32, 111);
+    display: inline-block;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+.page-container {
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.container__fluid {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.container {
+    max-width: 1250px;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+@media only screen and (max-width: 1200px) {
+    .container {
+        padding: 0 15px;
+        max-width: 100%;
+    }
+}
+@media only screen and (max-width: 575px) {
+    .container {
+        padding: 0 10px;
+    }
+}
+.bg {
+    background: #f0f3f8;
+}
+.flex-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.swiper {
+    margin-top: 50px;
+    max-width: 1250px;
+    padding-bottom: 40px;
+}
+.swiper-button-prev {
+    width: 30px!important;
+    height: 20px!important;
+    background-image: url('https://westmotors.hb.bizmrg.com/media/cloud_photo/icons/prevArrow.png');
+}
+.swiper-button-prev:after {
+    content: none;
+}
+.swiper-button-next {
+    width: 30px!important;
+    height: 20px!important;
+    background-image: url('https://westmotors.hb.bizmrg.com/media/cloud_photo/icons/nextArrow.png');
+}
+.swiper-button-next:after {
+    content: none;
+}
+.swiper-slide {
+    height: auto;
+    background: white;
+    border-radius: 15px;
+}
+.swiper-pagination {
+    padding-top: 20px;
+}
+.review {
+    height: auto;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 17px;
+    padding-bottom: 10px;
+}
+.review .review__client {
+    margin-bottom: 8px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.review .review__client .review__client-left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.review .review__client .review__client-left .name__litter {
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    margin-right: 10px;
+    background: #78909d;
+    font-size: 13px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: white;
+}
+.review .review__client .review__client-left .name-img {
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+.review .review__client .review__client-left .review__block .review__name {
+    font-size: 15px;
+}
+.review .review__client .review__client-left .review__block .review__count {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.54);
+}
+.review .review__client .google-logo {
+    max-width: 93px;
+    width: 100%;
+}
+.review .review__stars {
+    margin-bottom: 8px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.review .review__stars .review__stars-star {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.review .review__stars .review__stars-star img {
+    width: 10px;
+    height: 10px;
+}
+.review .review__stars {
+    margin-left: 6px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.54);
+}
+ .review__stars-date {
+    margin-left: 6px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.54);
+}
+.review .review__text {
+    margin-bottom: 8px;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 14px;
+}
+.review .review__buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: end;
+}
+.review .review__buttons .review__like {
+    margin-right: 70px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.87);
+}
+.review .review__buttons .review__like img {
+    margin-right: 7px;
+}
+.review .review__buttons .review__share {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.87);
+}
+.review .review__buttons .review__share img {
+    margin-right: 7px;
+}
+@media only screen and (max-width: 1024px) {
+    .container__fluid > .container {
+        padding: 0 65px;
+    }
+}
