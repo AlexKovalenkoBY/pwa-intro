@@ -125,6 +125,10 @@ img {
     height: auto;
 }
 
+.header__top {
+    z-index: 999!important;
+}
+
 
 /*
 iframe{
