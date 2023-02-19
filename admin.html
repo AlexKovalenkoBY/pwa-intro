@@ -7,25 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>adminka</title>
     <script>
-        async function getPP() {
-            const response = await fetch("http://127.0.0.1/", {
+        async function getAll() {
 
+            const response = await fetch("http://127.0.0.1/", {
                 method: "GET",
                 headers: {
-                    "Accept": "application/json",
-                    "Content-Encoding": "gzip, identity, deflate, gzip",
+                    "Accept": "application/text",
+                    "Content-Encoding": "gzip, identity, deflate",
                     "Accept-Encoding": "gzip"
                 }
             });
-            // если запрос прошел нормально
-            if (response.ok) {
-                // получаем данные
-                const bps = await response.json();
-                objPP = bps;
+            if (response.ok === true) {
+                const content = await response.json();
+                // bodytypes : ['седан', 'чэтчбэк', 'внедорожник', 'минивэн', 'лифтбэк']
+                // countries : ['США', 'ЕВРОПА', 'РОССИЯ']
+                // enginetypes: ['бензин', 'дизель', 'гибрид', 'электро']
+                // geartypes: ['МКПП', 'АКПП']
+                // wheeltypes: ['Передний', 'Задний', 'Полный']
             }
 
         }
-        getPP();
+        getAll();
     </script>
 </head>
 

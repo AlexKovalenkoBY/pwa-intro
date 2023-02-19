@@ -20,6 +20,13 @@ let countryArray = [];
 
 // server.use(express.static(fullPath)) // ))__dirname + '/public'))
 server.use(express.static(__dirname + '/public'))
+const allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*')
+
+    res.header('Access-Control-Allow-Headers', '*')
+    next()
+}
+server.use(allowCrossDomain)
 
 
 // const db = require('./auto.db');
@@ -64,7 +71,8 @@ server.listen = function() {
 }
 process.on('SIGINT', () => {
     console.log('About to close process SIGINT or CTRL+C');
-    db.commit();
+    // db.
+    // commit();
     db.close();
     server.close();
 });
