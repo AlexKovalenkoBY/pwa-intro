@@ -1,0 +1,16 @@
+{
+    "table": "bodytype",
+    "mockStartIndex": 1,
+    "mockCount": 5,
+    "mockValueReference": "http://mockjs.com/examples.html#DPD",
+    "mock": {
+        "id": {
+            "type": "INTEGER",
+            "value": "@integer(1,1024)"
+        },
+        "bodytype": {
+            "type": "TEXT",
+            "value": "@word()"
+        }
+    }
+}

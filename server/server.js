@@ -101,6 +101,15 @@ const getFromTable = (tableName) => {
     })
 
 }
+server.get('/cars', async function(req, res) {
+    console.time('getcars');
+    let cars = [];
+    db.all("SELECT * FROM cars", function(err, rows) {
+        cars = rows.map((e) => { return e.name });
+    });
+    res.send({ cars: cars });
+    console.timeEnd('getcars');
+});
 server.get('/', async function(req, res) {
     console.time('getrequest1')
 

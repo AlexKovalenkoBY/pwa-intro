@@ -1,0 +1,16 @@
+{
+    "table": "enginetype",
+    "mockStartIndex": "auto",
+    "mockCount": 3,
+    "mockValueReference": "http://mockjs.com/examples.html#DPD",
+    "mock": {
+        "id": {
+            "type": "INTEGER",
+            "value": "#mockIndex"
+        },
+        "enginetype": {
+            "type": "TEXT",
+            "value": "@sentence()"
+        }
+    }
+}

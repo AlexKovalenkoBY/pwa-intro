@@ -1,0 +1,16 @@
+{
+    "table": "wheeltype",
+    "mockStartIndex": "auto",
+    "mockCount": 3,
+    "mockValueReference": "http://mockjs.com/examples.html#DPD",
+    "mock": {
+        "id": {
+            "type": "INTEGER",
+            "value": "#mockIndex"
+        },
+        "wheeltype": {
+            "type": "TEXT",
+            "value": "@sentence()"
+        }
+    }
+}
