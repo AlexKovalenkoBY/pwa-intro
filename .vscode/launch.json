@@ -5,6 +5,12 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"type": "java",
+			"name": "Launch App",
+			"request": "launch",
+			"mainClass": "com.example.App"
+		},
+		{
 			"type": "pwa-node",
 			"request": "launch",
 			"name": "Launch Program",
