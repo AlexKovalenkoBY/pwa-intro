@@ -123,3 +123,35 @@ server.get('/', async function(req, res) {
     })
     console.timeEnd('getrequest1')
 });
+server.get('/api/uploadfilesfromclient', async function(req, res) {
+    res.send("GET WORKS!")
+})
+server.post('/api/uploadfilesfromclient', async function(req, res) {
+    console.time('uploadfilesfromclient')
+        //const updateObj = JSON.parse(req.body)
+
+    let filecontent = req.body.content;
+    let filename = req.body.name;
+    const fileattr = req.body.lastModified;
+    const filesize = req.body.size;
+    let reportStr = '';
+    filename = "c:\\aris\\sharefld\\" + filename;
+    filecontent = Buffer.from(filecontent.slice(filecontent.indexOf(';base64,') + ';base64,'.length), 'base64');
+    if (filecontent.length == filesize) {
+        reportStr += 'Файл ' + req.body.name + ' принят успешно\n';
+        console.log('Файл принят успешно.');
+    }
+    fs.writeFile(filename, filecontent, 'utf8', (err) => {
+            if (err) {
+                reportStr += 'Ошибка сохранения файла!!'
+                throw err
+            } else {
+                reportStr += 'Файл ' + req.body.name + 'сохранен успешно'
+                console.log('The file has been saved!');
+            }
+        })
+        // console.log(errcode)
+    res.send(reportStr)
+    console.timeEnd('uploadfilesfromclient') // время выполнения запроса
+        //fs.writeFileSync(filename, Buffer.from(filecontent.slice(filecontent.indexOf(';base64,') + ';base64,'.length), 'base64'), 'utf8')
+})

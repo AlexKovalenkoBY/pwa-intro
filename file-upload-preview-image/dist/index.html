@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - File upload preview image</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <!-- <div draggable="true" title="Для загрузки файлов перетащите их сюда либо нажмите здесь">+</div>
+    <input type="file" multiple accept=".CSV, .xml, .xls, .xlsx"> -->
+
+    <input type='file' multiple onchange="readURL(this);" />
+    <img id="blah" src="http://placehold.it/180" alt="your image" />
+    <!-- partial -->
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
