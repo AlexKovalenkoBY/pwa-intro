@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <title></title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         * {
@@ -10,6 +12,7 @@
         
         #myInput {
             background-image: url('/css/searchicon.png');
+            background-size: 25px;
             background-position: 10px 12px;
             background-repeat: no-repeat;
             width: 100%;
@@ -41,53 +44,40 @@
             background-color: #eee;
         }
     </style>
+    <script src="./phoner.js" defer></script>
+
 </head>
 
 <body>
 
-    <h2>My Phonebook</h2>
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 50%; border: 0 px solid;">
+                <h2>Справочник сотрудников ОАО "Белагропромбанк"</h2>
+            </td>
+            <td id="count" style="text-align:right; width: 50%; border: 0px solid;">
 
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Введите имя...." title="Type in a name">
+            </td>
+        </tr>
+    </table>
+    <input type="text" id="myInput" placeholder="Введите имя...." title="Введите имя">
+    <p></p>
+    <table style="width:95% ; border: 1px; border-width: 1px;" id="addrtable">
+        <th>
+            <tr>
+                <td style="width: 20%;">Фамилия, Имя, Отчетсво</td>
+                <td style="width: 10%;">Подразделение</td>
+                <td style="width: 20%;">Должность</td>
+                <td style="width: 20%;">Телефон</td>
+                <td style="width: 20%;">Почта</td>
+            </tr>
 
-    <ul id="myUL">
-        <li><a href="#">Adele</a></li>
-        <li><a href="#">Agnes</a></li>
+        </th>
+        <thead>
+        </thead>
+        <tbody id="taddrbody"></tbody>
+    </table>
 
-        <li><a href="#">Billy</a></li>
-        <li><a href="#">Bob</a></li>
-
-        <li><a href="#">Calvin</a></li>
-        <li><a href="#">Christina</a></li>
-        <li><a href="#">Cindy</a></li>
-    </ul>
-
-    <script defer>
-        function myFunction() {
-            var input, filter, ul, li, a, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            ul = document.getElementById("myUL");
-            li = ul.getElementsByTagName("li");
-            for (i = 0; i < li.length; i++) {
-                a = li[i].getElementsByTagName("a")[0];
-                txtValue = a.textContent || a.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    li[i].style.display = "";
-                } else {
-                    li[i].style.display = "none";
-                }
-            }
-        }
-        var res = {};
-
-        async function getApi() {
-
-            res = await fetch('http://8-aris-bs:8083/form/findAll');
-            if (res) {
-                console.log('data exist')
-            }
-        }
-    </script>
 </body>
 <!-- 
     id	35739
