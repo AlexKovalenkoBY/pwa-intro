@@ -105,6 +105,7 @@
         while (table.firstChild) {
             table.removeChild(table.firstChild);
         }
+        let count = D.getElementById("count");
         if (filter.length > 2) {
             // filteredres = res.filter(e => (e.iFamily.toString().toUpperCase().includes(filter)) || (e.iFName.toString().toUpperCase().includes(filter)) ||
             //         (e.iNamePosts.toString().toUpperCase().includes(filter))
@@ -155,9 +156,13 @@
                 tr.appendChild(td);
                 table.appendChild(tr);
             }
+
+            count.innerText = "Найдено: " + filteredres.length + " из " + res.length
+
+        } else {
+
+            count.innerText = "";
         }
-        let count = D.getElementById("count");
-        count.innerText = "Найдено: " + filteredres.length + " из " + res.length
 
     })
 
