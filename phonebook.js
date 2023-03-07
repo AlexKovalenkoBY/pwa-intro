@@ -20,6 +20,39 @@
         res = await fetch('http://8-aris-bs:8083/form/findAll').then((response) => response.json());
         res = Object.entries(res).map(el => {
             // return el[1]
+            const regionCode = el[1].login.split("_")[0];
+            let regionText = regionCode;
+            switch (regionCode) {
+                case '1': // if (x === 'value1')
+                    regionText = "Брест и Брестская область";
+                    break
+
+                case '8': // if (x === 'value1')
+                    regionText = "Центральный аппарат или ЦСБО";
+                    break
+
+                case '2': // if (x === 'value1')
+                    regionText = "Витебск и Витебская область";
+                    break
+                case '3': // if (x === 'value1')
+                    regionText = "Гомель и Гомельская область";
+                    break
+                case '4': // if (x === 'value1')
+                    regionText = "Гродно и Гродненская область";
+                    break
+                case '5': // if (x === 'value1')
+                    regionText = "Минская область";
+                    break
+                case '6': // if (x === 'value1')
+                    regionText = "Могилев и Могилевская область";
+                    break
+                case '7': // if (x === 'value1')
+                    regionText = "РД по г. Минску";
+                    break
+                default:
+                    regionText = "не определен"
+                    break
+            }
             return {
                 iIDDivTenChar: el[1].iIDDivTenChar,
                 iTabNumber: el[1].iTabNumber,
@@ -31,7 +64,8 @@
                 iPhone: el[1].iPhone,
                 iIntPhone: el[1].iIntPhone,
                 iEmail: el[1].iEmail,
-                iNamePosts: el[1].iNamePosts
+                iNamePosts: el[1].iNamePosts,
+                iRegionHint: regionText
             }
         });
     });
@@ -86,16 +120,20 @@
             for (i = 0; i < filteredres.length; i++) {
                 let tr = D.createElement("tr");
                 let td = D.createElement("td");
+                td.setAttribute("title", filteredres[i].iRegionHint);
                 td.innerText = filteredres[i].iFamily + delim + filteredres[i].iFName + delim + filteredres[i].iPatronymic;
                 tr.appendChild(td);
                 td = D.createElement("td");
+                td.setAttribute("title", filteredres[i].iRegionHint);
                 td.innerText = filteredres[i].iIDDivTenChar;
                 tr.appendChild(td);
                 td = D.createElement("td");
+                td.setAttribute("title", filteredres[i].iRegionHint);
                 td.innerText = filteredres[i].iNamePosts;
                 tr.appendChild(td);
 
                 td = D.createElement("td");
+                td.setAttribute("title", filteredres[i].iRegionHint);
                 if (filteredres[i].iPhone) {
                     td.innerText = "гор: " + filteredres[i].iPhone;
                 } else {
@@ -108,6 +146,7 @@
 
                 tr.appendChild(td)
                 td = D.createElement("td");
+                td.setAttribute("title", filteredres[i].iRegionHint);
                 let mail = document.createElement("a");
                 mail.href = "mailto:" + filteredres[i].iEmail;
                 // mail.setAttribute("class", "input-group-text");

@@ -8,7 +8,7 @@
 			"name": "Launch Edge",
 			"request": "launch",
 			"type": "msedge",
-			"url": "http://localhost:5500/phonespr.html",
+			"url": "http://localhost:5500/phonebook.html",
 			"webRoot": "${workspaceFolder}"
 		},
 		{
