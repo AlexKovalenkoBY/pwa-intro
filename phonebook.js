@@ -80,7 +80,7 @@
                 if (e.iFamily) res = res.concat(e.iFamily.toString().toUpperCase());
                 if (e.iFName) res = res.concat(e.iFName.toString().toUpperCase());
                 if (e.iPatronymic) res = res.concat(e.iPatronymic.toString().toUpperCase());
-                return res.includes(filter) || e.iNamePosts.toString().toUpperCase().replaceAll(' ', '').includes(filter)
+                return res.includes(filter) || e.iNamePosts.toString().toUpperCase().replaceAll(' ', '').includes(filter) || e.iIDDivTenChar.toString().toUpperCase().includes(filter)
             })
 
             for (i = 0; i < filteredres.length; i++) {
