@@ -1,16 +1,54 @@
 ((D, B, log = (arg) => console.log(arg)) => {
     let res = {};
+    B.addEventListener("keyup", async(e) => {
+        let count = D.getElementById("count");
+        let input, filter; //, ul, li, a, i, txtValue;
+        input = D.getElementById("myInput");
+        filter = input.value.toUpperCase().replaceAll(' ', '');
+        if (e.key === "Escape") { // escape key maps to keycode `27`
+            // <DO YOUR WORK HERE>
+            await onFocus();
+            count.innerText = "";
+        }
+        if (((e.key === "Enter") || (e.key === "Backspace")) && ((filter.length == 0))) {
+            count.innerText = "";
+        }
+    });
+
     D.addEventListener('DOMContentLoaded', async() => {
         // handle DOMContentLoaded event
         res = await fetch('http://8-aris-bs:8083/form/findAll').then((response) => response.json());
         res = Object.entries(res).map(el => {
-            return el[1]
+            // return el[1]
+            return {
+                iIDDivTenChar: el[1].iIDDivTenChar,
+                iTabNumber: el[1].iTabNumber,
+                iFamily: el[1].iFamily,
+                iFName: el[1].iFName,
+                iPatronymic: el[1].iPatronymic,
+                iAdress: el[1].iAdress,
+                iOffice: el[1].iOffice,
+                iPhone: el[1].iPhone,
+                iIntPhone: el[1].iIntPhone,
+                iEmail: el[1].iEmail,
+                iNamePosts: el[1].iNamePosts
+            }
         });
     });
-    B.addEventListener('load', async() => {
-        console.info('loaded');
+    /*<!-- 
+    iIDDivTenChar	"Сектор управления человеческими ресурсами"
 
-    }, false);
+    iTabNumber	"7852"
+    iFamily	"Абаджян"
+    iFName	"Людмила"
+    iPatronymic	"Федоровна"
+    iAdress	""
+    iOffice	""
+    iPhone	"(212)673941"
+    iIntPhone	""
+    iEmail	"l.abadzhyan@vitebsk.belapb.by"
+    iNamePosts	"Начальник сектора" 
+    */
     D.getElementById("myInput").addEventListener('onfocus', onFocus);
     D.getElementById("myInput").addEventListener('onclick', onFocus);
     async function onFocus() {
@@ -25,7 +63,7 @@
     input.addEventListener("keyup", async() => {
 
         let input, filter; //, ul, li, a, i, txtValue;
-        input = document.getElementById("myInput");
+        input = D.getElementById("myInput");
         filter = input.value.toUpperCase().replaceAll(' ', '');
         let filteredres = [];
         const delim = " ";
@@ -42,31 +80,40 @@
                 if (e.iFamily) res = res.concat(e.iFamily.toString().toUpperCase());
                 if (e.iFName) res = res.concat(e.iFName.toString().toUpperCase());
                 if (e.iPatronymic) res = res.concat(e.iPatronymic.toString().toUpperCase());
-
                 return res.includes(filter) || e.iNamePosts.toString().toUpperCase().replaceAll(' ', '').includes(filter)
             })
 
             for (i = 0; i < filteredres.length; i++) {
-                let tr = document.createElement("tr");
-                let td = document.createElement("td");
+                let tr = D.createElement("tr");
+                let td = D.createElement("td");
                 td.innerText = filteredres[i].iFamily + delim + filteredres[i].iFName + delim + filteredres[i].iPatronymic;
                 tr.appendChild(td);
-                td = document.createElement("td");
+                td = D.createElement("td");
                 td.innerText = filteredres[i].iIDDivTenChar;
                 tr.appendChild(td);
-                td = document.createElement("td");
+                td = D.createElement("td");
                 td.innerText = filteredres[i].iNamePosts;
                 tr.appendChild(td);
 
-                td = document.createElement("td");
-                td.innerText = filteredres[i].iPhone;
+                td = D.createElement("td");
+                if (filteredres[i].iPhone) {
+                    td.innerText = "гор: " + filteredres[i].iPhone;
+                } else {
+                    td.innerText = "";
+                }
+                if (filteredres[i].iIntPhone) {
+
+                    td.innerText = td.innerText + "\nвнутр: " + filteredres[i].iIntPhone;
+                }
+
+                tr.appendChild(td)
+                td = D.createElement("td");
+                let mail = document.createElement("a");
+                mail.href = "mailto:" + filteredres[i].iEmail;
+                // mail.setAttribute("class", "input-group-text");
+                mail.innerText = filteredres[i].iEmail;
+                td.appendChild(mail);
                 tr.appendChild(td);
-
-                td = document.createElement("td");
-                td.innerText = filteredres[i].iEmail;
-                tr.appendChild(td);
-
-
                 table.appendChild(tr);
             }
         }
