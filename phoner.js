@@ -1,20 +1,20 @@
 ((D, B, log = (arg) => console.log(arg)) => {
-    var res;
-    // body.addEventListener("load", init, false);
-    D.body.addEventListener('load', () => {
-        console.info('loaded');
-    }, false);
-    window.onreadystatechange = async function() {
-        // your code here
+    let res = {};
+    D.addEventListener('DOMContentLoaded', async() => {
+        // handle DOMContentLoaded event
         res = await fetch('http://8-aris-bs:8083/form/findAll').then((response) => response.json());
         res = Object.entries(res).map(el => {
             return el[1]
         });
-    }
+    });
+    B.addEventListener('load', async() => {
+        console.info('loaded');
+
+    }, false);
     D.getElementById("myInput").addEventListener('onfocus', onFocus);
     D.getElementById("myInput").addEventListener('onclick', onFocus);
     async function onFocus() {
-        elem = D.getElementById("taddrbody");
+        let elem = D.getElementById("taddrbody");
         while (elem.firstChild) {
             elem.removeChild(elem.firstChild);
         }
@@ -23,14 +23,13 @@
     }
     let input = D.getElementById("myInput");
     input.addEventListener("keyup", async() => {
-        // async function myFunction() {
 
         let input, filter; //, ul, li, a, i, txtValue;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase().replaceAll(' ', '');
         let filteredres = [];
         const delim = " ";
-        table = document.getElementById("taddrbody");
+        let table = D.getElementById("taddrbody");
         while (table.firstChild) {
             table.removeChild(table.firstChild);
         }
@@ -43,24 +42,18 @@
                 if (e.iFamily) res = res.concat(e.iFamily.toString().toUpperCase());
                 if (e.iFName) res = res.concat(e.iFName.toString().toUpperCase());
                 if (e.iPatronymic) res = res.concat(e.iPatronymic.toString().toUpperCase());
-                // res = res.concat(e.iNamePosts);
+
                 return res.includes(filter) || e.iNamePosts.toString().toUpperCase().replaceAll(' ', '').includes(filter)
             })
 
-            // ul = document.getElementById("myUL");
-
             for (i = 0; i < filteredres.length; i++) {
-
-                tr = document.createElement("tr");
-
-                td = document.createElement("td");
+                let tr = document.createElement("tr");
+                let td = document.createElement("td");
                 td.innerText = filteredres[i].iFamily + delim + filteredres[i].iFName + delim + filteredres[i].iPatronymic;
                 tr.appendChild(td);
-
                 td = document.createElement("td");
                 td.innerText = filteredres[i].iIDDivTenChar;
                 tr.appendChild(td);
-
                 td = document.createElement("td");
                 td.innerText = filteredres[i].iNamePosts;
                 tr.appendChild(td);
