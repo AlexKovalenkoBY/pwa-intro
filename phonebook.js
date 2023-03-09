@@ -65,10 +65,14 @@
                 iIntPhone: el[1].iIntPhone,
                 iEmail: el[1].iEmail,
                 iNamePosts: el[1].iNamePosts,
-                iRegionHint: regionText
+                iRegionHint: regionText,
+                iJoinedName: el[1].iFamily.concat(el[1].iFName, el[1].iPatronymic).toUpperCase()
             }
         });
     });
+
+
+
     /*<!-- 
     iIDDivTenChar	"Сектор управления человеческими ресурсами"
 
@@ -111,12 +115,21 @@
             //         (e.iNamePosts.toString().toUpperCase().includes(filter))
             //     )
             filteredres = res.filter(e => {
-                let res = "";
-                if (e.iFamily) res = res.concat(e.iFamily.toString().toUpperCase());
-                if (e.iFName) res = res.concat(e.iFName.toString().toUpperCase());
-                if (e.iPatronymic) res = res.concat(e.iPatronymic.toString().toUpperCase());
-                return res.includes(filter) || e.iNamePosts.toString().toUpperCase().replaceAll(' ', '').includes(filter) || e.iIDDivTenChar.toString().toUpperCase().includes(filter)
-            })
+                    let res = "";
+                    if (e.iFamily) res = res.concat(e.iFamily.toString().toUpperCase());
+                    if (e.iFName) res = res.concat(e.iFName.toString().toUpperCase());
+                    if (e.iPatronymic) res = res.concat(e.iPatronymic.toString().toUpperCase());
+                    return res.includes(filter) || e.iNamePosts.toString().toUpperCase().replaceAll(' ', '').includes(filter) || e.iIDDivTenChar.toString().toUpperCase().includes(filter)
+                })
+                //сортируем список по ФИО
+                // filteredres = filteredres.sort((a, b) => (a.iJoinedName > b.iJoinedName) ? 1 : ((b.iJoinedName > a.iJoinedName) ? -1 : 0));
+            filteredres = filteredres.sort((a, b) => {
+                const a1 = a.iFamily + " " + a.iFName + " " + a.iPatronymic;
+                const b1 = b.iFamily + " " + b.iFName + " " + b.iPatronymic;
+                return (a1 > b1) ? 1 : ((b1 > a1) ? -1 : 0)
+            });
+            // filteredres = filteredres.sort((a, b) => (a.iFName > b.iFName) ? 1 : ((b.iFName > a.iFName) ? -1 : 0));
+            // filteredres = filteredres.sort((a, b) => (a.iPatronymic > b.iPatronymic) ? 1 : ((b.iPatronymic > a.iPatronymic) ? -1 : 0));
 
             for (i = 0; i < filteredres.length; i++) {
                 let tr = D.createElement("tr");
